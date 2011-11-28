@@ -6,7 +6,7 @@ verbose=0
 xarg=()
 args=()
 term=${TERM_PROG:-xterm}
-hostname=$(hostname -f)
+hostname=$(hostname)
 found=0
 
 warn()
