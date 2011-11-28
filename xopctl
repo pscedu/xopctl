@@ -93,10 +93,12 @@ arc)	d=/local
 	lnrtd:firehose1$p:$d						\
 	lnrtd:firehose2$p:$d						\
 	lnrtd:firehose3$p:$d						\
+	lnrtd:firehose4$p:$d						\
 	ex:sleep:2							\
 	mount_slash:firehose1$p:$d					\
 	mount_slash:firehose2$p:$d					\
 	mount_slash:firehose3$p:$d					\
+	mount_slash:firehose4$p:$d					\
 	mount_slash:tahini$p:$ud:'modprobe fuse'			\
 	mount_slash:tg-login1.blacklight$t:$d				\
 	mount_slash:tg-login2.blacklight$t:$d				\
