@@ -100,7 +100,7 @@ arc)	d=/local
 	mount_slash:tg-login2.blacklight$t:$d				\
 	ex:sleep:2							\
 	sliod-ue:tahini$p:$ud:'export	CTL_SOCK_FILE=/var/run/sliod.ue.sock		LNET_NETWORKS="tcp12(eth2)"'		\
-	sliod-uo:tahini$p:$ud:'export	CTL_SOCK_FILE=/var/run/sliod.uo.sock		LNET_NETWORKS="tcp12(eth2:1)"'		\
+	sliod-uo:tahini$p:$ud:'export	CTL_SOCK_FILE=/var/run/sliod.uo.sock		LNET_NETWORKS="tcp12(vlan100)"'		\
 																\
 	sliod0:sense0$p:$ud:'export	CTL_SOCK_FILE=/var/run/sense0-sliod0.sock	LNET_NETWORKS="tcp12(vlan100:1)"'	\
 	sliod1:sense0$p:$ud:'export	CTL_SOCK_FILE=/var/run/sense0-sliod1.sock	LNET_NETWORKS="tcp12(vlan100:2)"'	\
