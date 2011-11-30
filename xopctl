@@ -220,7 +220,7 @@ launch()
 		    export PSC_SYSLOG_info=1
 		    export PSC_LOG_LEVEL=warn
 		    export PSC_LOG_LEVEL_info=info
-		    export PSC_LOG_FILE='$dir'/'$mode'.s2/log/'$name'/%t
+		    export PSC_LOG_FILE='$dir'/'$mode'.s2/log/'$name'.'$host'/%t
 		    export CONFIG_FILE='$dir'/'$mode'.s2/slcfg
 		    export SHELL=/bin/bash
 		    export GDBHISTFILE=`which '$name'`.gdbhist
