@@ -199,9 +199,9 @@ launch()
 			found=0
 			for j in $hosts; do
 				h=${j%:*}
-				d=${j#*:}
-				[ x"$d" = x"$j" ] && d=$name
-				if [ x"$d" == x"$name" ] &&
+				n=${j#*:}
+				[ x"$n" = x"$j" ] && n=$name
+				if [ x"$n" == x"$name" ] &&
 				    [[ x"$host" == x$h* ]]; then
 					found=1
 					break
