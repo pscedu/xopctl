@@ -95,6 +95,8 @@ arc)	d=/local
 	mount_slash:firehose2$p:$d					\
 	mount_slash:firehose3$p:$d					\
 	mount_slash:firehose4$p:$d					\
+        mount_slash:kollman3$p:$d:'modprobe fuse'                       \
+        mount_slash:xfer-admin$p:$ud:'modprobe fuse'                    \
 	mount_slash:tahini$p:$ud:'modprobe fuse'			\
 	mount_slash:tg-login1.blacklight$t:$d				\
 	mount_slash:tg-login2.blacklight$t:$d				\
