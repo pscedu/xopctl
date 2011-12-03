@@ -24,7 +24,7 @@ xscreen()
 	local OPTIND OPTARG launch=0
 	local sudo setcwd scrinit
 	local xtargs=(${xarg[@]})
-	local cmd="exec \$SHELL"
+	local cmd="gdb; \$SHELL"
 
 	while getopts "c:d:I:Sx:" c; do
 		case $c in
@@ -233,10 +233,10 @@ launch()
 			 echo set history size 10000
 			 echo set confirm off
 			 echo set height 0
+			 ru
 			) > $tmpfile
 			    command gdb -x $tmpfile -q "$@"
 		    }
-		    export -f gdb
 		    mkdir -p $(dirname $PSC_LOG_FILE)
 		    ulimit -n 100000
 		    '"$*
