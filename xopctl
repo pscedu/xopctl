@@ -24,7 +24,8 @@ xscreen()
 	local OPTIND OPTARG launch=0
 	local sudo setcwd scrinit
 	local xtargs=(${xarg[@]})
-	local cmd="gdb; \$SHELL"
+	local cmd
+	local prog
 
 	while getopts "c:d:I:Sx:" c; do
 		case $c in
@@ -47,6 +48,15 @@ xscreen()
 	local host=$1 ; shift
 	local name=$1 ; shift
 	local screen="$sudo screen -A -x -R"
+
+	case ${name#*.} in
+	mount_slash*)	prog=mount_slash;;
+	sliod*)		prog=sliod;;
+	slashd*)	prog=slashd;;
+	*)		warn "$name: unknown program"; return;;
+	esac
+
+	[ -z "$cmd" ] && cmd="gdb $prog; \$SHELL"
 
 	if [ x"$term" != x"${term%xterm}" ]; then
 		xtargs+=(-xrm XTerm*allowTitleOps:false -title "${host%%.*}: $name")
@@ -233,7 +243,7 @@ launch()
 			 echo set history size 10000
 			 echo set confirm off
 			 echo set height 0
-			 ru
+			 echo ru
 			) > $tmpfile
 			    command gdb -x $tmpfile -q "$@"
 		    }
