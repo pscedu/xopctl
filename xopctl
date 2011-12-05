@@ -1,6 +1,9 @@
 #!/usr/bin/env perl
 # $Id$
+# TODO
+# - parse a .slcfg to populate the data
 
+# use lib qw(%INST_PLMODDIR%);
 use PFL::Getoptv;
 use strict;
 use warnings;
@@ -117,6 +120,7 @@ sub echorun {
 my $term = "xterm";
 $term = $ENV{TERM_PROG} if exists $ENV{TERM_PROG};
 my $hostname = `hostname`;
+chomp $hostname;
 
 die "$mode: bad mode\n" unless exists $dep{$mode};
 
@@ -127,21 +131,22 @@ foreach my $spec (@{ $dep{$mode} }) {
 		echorun $spec->{exec}, @{ $spec->{arg} };
 		next;
 	}
+	$spec->{name} = $spec->{prog} unless exists $spec->{name};
 	if (@uspecs) {
 		$found = 0;
 		foreach my $uspec (@uspecs) {
-			my ($h, $n) = split $uspec, /:/;
+			my ($h, $n) = split /:/, $uspec;
 			$n = $spec->{name} unless $n;
 			if ($n eq $spec->{name} &&
 			    $spec->{host} =~ /^\Q$h\E/) {
-				$found = 0;
+				$found = 1;
 				last;
 			}
 		}
 		next unless $found;
 	}
-	unless (exists $opts{X} or $spec->{host} eq $hostname) {
-		warn "$spec->{host} is not this host, skipping\n";
+	unless (exists $opts{X} or $spec->{host} =~ /^\Q$hostname\E/) {
+		warn "$spec->{host} is not this host ($hostname), skipping\n";
 		next;
 	}
 	$spec->{cmds} = "" unless exists $spec->{cmds};
@@ -166,12 +171,12 @@ foreach my $spec (@{ $dep{$mode} }) {
 			echo set history size 10000
 			echo set confirm off
 			echo set height 0
-			echo set args
+			echo set args $spec->{arg}
 			echo ru
 		) > \$tmpfile
 		gdb -x \$tmpfile -q $spec->{prog}
 EOF
-	my $screen = "screen -A -x -R";
+	my @screen = qw(screen -A -x -R);
 	my $name = "$mode.$spec->{name}";
 
 	if ($opts{X}) {
@@ -182,11 +187,11 @@ EOF
 		    "-title", "$spec->{host}: $name" if $term =~ /xterm/;
 		if (fork) {
 			exec $term, @xtargs, qw(-e ssh -t), $spec->{host},
-			    "sudo", $screen, "-S", $name,
+			    "sudo", @screen, "-S", $name,
 			    "sh", "-c", "'$init'" or die "exec: $!\n";
 		}
 	} else {
-		exec $screen, "-S", $name, "sh", "-c", $init or
+		exec @screen, "-S", $name, "sh", "-c", $init or
 		    die "exec: $!\n";
 	}
 }
