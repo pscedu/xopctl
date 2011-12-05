@@ -158,12 +158,13 @@ foreach my $spec (@{ $dep{$mode} }) {
 		export CONFIG_FILE=$spec->{dir}/$mode.s2/slcfg
 		export SHELL=/bin/bash
 		export GDBHISTFILE=`which $spec->{prog}`.gdbhist
+		@{[ map { qq!export $_="$spec->{env}{$_}"\n\t\t! } keys %{ $spec->{env} } ]}
 		ulimit -n 100000
 
 		mkdir -p \$(dirname \$PSC_LOG_FILE)
 		cd "$spec->{dir}/src/p"
 
-		$spec->{init}
+		@{[exists $spec->{init} ? $spec->{init} : ""]}
 
 		tmpfile=/tmp/.gdbcmd.\$RANDOM
 		(
@@ -171,7 +172,7 @@ foreach my $spec (@{ $dep{$mode} }) {
 			echo set history size 10000
 			echo set confirm off
 			echo set height 0
-			echo set args $spec->{arg}
+			@{[exists $spec->{arg} ? "echo set args $spec->{arg}" : ""]}
 			echo ru
 		) > \$tmpfile
 		gdb -x \$tmpfile -q $spec->{prog}
