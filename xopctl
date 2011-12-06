@@ -4,6 +4,7 @@
 # - parse a .slcfg to populate the data
 
 # use lib qw(%INST_PLMODDIR%);
+use lib qw(../../tools/lib);
 use PFL::Getoptv;
 use strict;
 use warnings;
