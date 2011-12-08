@@ -98,10 +98,10 @@ my %dep = (
 		{ name => "sliod5", prog => "sliod", host => "sense7$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense7-sliod5.sock", LNET_NETWORKS => "tcp12(vlan100:5)" } },
 
 		{ exec => "sleep", arg => [2] },
-		{ prog => "lnrtd", host => "firehose1$p", dir => $d },
-		{ prog => "lnrtd", host => "firehose2$p", dir => $d },
-		{ prog => "lnrtd", host => "firehose3$p", dir => $d },
-		{ prog => "lnrtd", host => "firehose4$p", dir => $d },
+		{ prog => "lnrtd", host => "firehose1$p", dir => $d, env => { LNET_NETWORKS => "sdp11(ib0),tcp12(vlan100)" } },
+		{ prog => "lnrtd", host => "firehose2$p", dir => $d, env => { LNET_NETWORKS => "sdp11(ib0),tcp12(vlan100)" } },
+		{ prog => "lnrtd", host => "firehose3$p", dir => $d, env => { LNET_NETWORKS => "sdp11(ib0),tcp12(vlan100)" } },
+		{ prog => "lnrtd", host => "firehose4$p", dir => $d, env => { LNET_NETWORKS => "sdp11(ib0),tcp12(vlan100)" } },
 	],
 );
 
