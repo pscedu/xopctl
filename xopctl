@@ -44,6 +44,7 @@ my %dep = (
 		{ name => "sliod4", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod4.sock", LNET_NETWORKS => "tcp12(vlan100:4)" } },
 		{ name => "sliod5", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod5.sock", LNET_NETWORKS => "tcp12(vlan100:5)" } },
 		{ name => "sliod6", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod6.sock", LNET_NETWORKS => "tcp12(vlan100:6)" } },
+		{ name => "sliod7", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod7.sock", LNET_NETWORKS => "tcp12(vlan100:7)" } },
 
 		{ name => "sliod0", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod0.sock", LNET_NETWORKS => "tcp12(vlan100:0)" } },
 		{ name => "sliod1", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod1.sock", LNET_NETWORKS => "tcp12(vlan100:1)" } },
@@ -51,6 +52,7 @@ my %dep = (
 		{ name => "sliod3", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod3.sock", LNET_NETWORKS => "tcp12(vlan100:3)" } },
 		{ name => "sliod4", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod4.sock", LNET_NETWORKS => "tcp12(vlan100:4)" } },
 		{ name => "sliod5", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod5.sock", LNET_NETWORKS => "tcp12(vlan100:5)" } },
+		{ name => "sliod6", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod6.sock", LNET_NETWORKS => "tcp12(vlan100:6)" } },
 
 		{ name => "sliod0", prog => "sliod", host => "sense2$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense2-sliod0.sock", LNET_NETWORKS => "tcp12(vlan100:0)" } },
 		{ name => "sliod1", prog => "sliod", host => "sense2$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense2-sliod1.sock", LNET_NETWORKS => "tcp12(vlan100:1)" } },
@@ -59,6 +61,7 @@ my %dep = (
 		{ name => "sliod4", prog => "sliod", host => "sense2$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense2-sliod4.sock", LNET_NETWORKS => "tcp12(vlan100:4)" } },
 		{ name => "sliod5", prog => "sliod", host => "sense2$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense2-sliod5.sock", LNET_NETWORKS => "tcp12(vlan100:5)" } },
 		{ name => "sliod6", prog => "sliod", host => "sense2$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense2-sliod6.sock", LNET_NETWORKS => "tcp12(vlan100:6)" } },
+		{ name => "sliod7", prog => "sliod", host => "sense2$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense2-sliod7.sock", LNET_NETWORKS => "tcp12(vlan100:7)" } },
 
 		{ name => "sliod0", prog => "sliod", host => "sense3$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense3-sliod0.sock", LNET_NETWORKS => "tcp12(vlan100:0)" } },
 		{ name => "sliod1", prog => "sliod", host => "sense3$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense3-sliod1.sock", LNET_NETWORKS => "tcp12(vlan100:1)" } },
