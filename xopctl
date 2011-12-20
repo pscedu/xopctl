@@ -32,8 +32,8 @@ my %dep = (
 
 		{ exec => "sleep", arg => [2] },
 
-		{ name => "sliod-ue", prog => "sliod", host => "tahini$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sliod.ue.sock", LNET_NETWORKS => "tcp12(eth2)" } },
-		{ name => "sliod-uo", prog => "sliod", host => "tahini$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sliod.uo.sock", LNET_NETWORKS => "tcp12(vlan100)" } },
+		{ name => "sliod-ue", prog => "sliod", host => "tahini$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sliod.ue.sock", LNET_NETWORKS => "tcp12(vlan99)" } },
+		{ name => "sliod-uo", prog => "sliod", host => "tahini$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sliod.uo.sock", LNET_NETWORKS => "tcp12(eth2)" } },
 
 		{ name => "sliod", prog => "sliod", host => "peel0$p", dir => $ud, env => { } },
 
