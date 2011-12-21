@@ -3,7 +3,7 @@
 # TODO
 # - parse a .slcfg to populate the data
 
-#1;2802;0c use lib qw(%INST_PLMODDIR%);
+# use lib qw(%INST_PLMODDIR%);
 use lib qw(../../tools/lib);
 use PFL::Getoptv;
 use strict;
