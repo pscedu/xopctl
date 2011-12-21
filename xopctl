@@ -3,7 +3,7 @@
 # TODO
 # - parse a .slcfg to populate the data
 
-# use lib qw(%INST_PLMODDIR%);
+#1;2802;0c use lib qw(%INST_PLMODDIR%);
 use lib qw(../../tools/lib);
 use PFL::Getoptv;
 use strict;
@@ -37,22 +37,22 @@ my %dep = (
 
 		{ name => "sliod", prog => "sliod", host => "peel0$p", dir => $ud, env => { } },
 
-		{ name => "sliod0", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod0.sock", LNET_NETWORKS => "tcp12(ix1:0)" } },
-		{ name => "sliod1", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod1.sock", LNET_NETWORKS => "tcp12(ix1:1)" } },
-		{ name => "sliod2", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod2.sock", LNET_NETWORKS => "tcp12(ix1:2)" } },
-		{ name => "sliod3", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod3.sock", LNET_NETWORKS => "tcp12(ix1:3)" } },
-		{ name => "sliod4", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod4.sock", LNET_NETWORKS => "tcp12(ix1:4)" } },
-		{ name => "sliod5", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod5.sock", LNET_NETWORKS => "tcp12(ix1:5)" } },
-		{ name => "sliod6", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod6.sock", LNET_NETWORKS => "tcp12(ix1:6)" } },
-		{ name => "sliod7", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod7.sock", LNET_NETWORKS => "tcp12(ix1:7)" } },
+		{ name => "sliod0", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod0.sock", LNET_NETWORKS => "tcp12(ix0:0)" } },
+		{ name => "sliod1", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod1.sock", LNET_NETWORKS => "tcp12(ix0:1)" } },
+		{ name => "sliod2", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod2.sock", LNET_NETWORKS => "tcp12(ix0:2)" } },
+		{ name => "sliod3", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod3.sock", LNET_NETWORKS => "tcp12(ix0:3)" } },
+		{ name => "sliod4", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod4.sock", LNET_NETWORKS => "tcp12(ix0:4)" } },
+		{ name => "sliod5", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod5.sock", LNET_NETWORKS => "tcp12(ix0:5)" } },
+		{ name => "sliod6", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod6.sock", LNET_NETWORKS => "tcp12(ix0:6)" } },
+		{ name => "sliod7", prog => "sliod", host => "sense0$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense0-sliod7.sock", LNET_NETWORKS => "tcp12(ix0:7)" } },
 
-		{ name => "sliod0", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod0.sock", LNET_NETWORKS => "tcp12(ix1:0)" } },
-		{ name => "sliod1", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod1.sock", LNET_NETWORKS => "tcp12(ix1:1)" } },
-		{ name => "sliod2", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod2.sock", LNET_NETWORKS => "tcp12(ix1:2)" } },
-		{ name => "sliod3", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod3.sock", LNET_NETWORKS => "tcp12(ix1:3)" } },
-		{ name => "sliod4", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod4.sock", LNET_NETWORKS => "tcp12(ix1:4)" } },
-		{ name => "sliod5", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod5.sock", LNET_NETWORKS => "tcp12(ix1:5)" } },
-		{ name => "sliod6", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod6.sock", LNET_NETWORKS => "tcp12(ix1:6)" } },
+		{ name => "sliod0", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod0.sock", LNET_NETWORKS => "tcp12(ix0:0)" } },
+		{ name => "sliod1", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod1.sock", LNET_NETWORKS => "tcp12(ix0:1)" } },
+		{ name => "sliod2", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod2.sock", LNET_NETWORKS => "tcp12(ix0:2)" } },
+		{ name => "sliod3", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod3.sock", LNET_NETWORKS => "tcp12(ix0:3)" } },
+		{ name => "sliod4", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod4.sock", LNET_NETWORKS => "tcp12(ix0:4)" } },
+		{ name => "sliod5", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod5.sock", LNET_NETWORKS => "tcp12(ix0:5)" } },
+		{ name => "sliod6", prog => "sliod", host => "sense1$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense1-sliod6.sock", LNET_NETWORKS => "tcp12(ix0:6)" } },
 
 		{ name => "sliod0", prog => "sliod", host => "sense2$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense2-sliod0.sock", LNET_NETWORKS => "tcp12(ix0:0)" } },
 		{ name => "sliod1", prog => "sliod", host => "sense2$p", dir => $ud, env => { CTL_SOCK_FILE => "/var/run/sense2-sliod1.sock", LNET_NETWORKS => "tcp12(ix0:1)" } },
