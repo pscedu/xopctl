@@ -118,7 +118,7 @@ sub usage {
 }
 
 my %opts;
-getoptv('vXx:', \%opts) or usage;
+getoptv('bvXx:', \%opts) or usage;
 usage unless @ARGV;
 my $mode = shift @ARGV;
 my @uspecs = @ARGV;
@@ -189,6 +189,7 @@ foreach my $spec (@{ $dep{$mode} }) {
 		gdb -x \$tmpfile -q $spec->{prog}
 EOF
 	my @screen = qw(screen -A -x -R);
+	push @screen, "-d" if $opts{b};
 	my $name = "$mode.$spec->{name}";
 
 	if ($opts{X}) {
