@@ -29,6 +29,7 @@ my %dep = (
 		{ prog => "mount_slash", host => "tahini$p",		   dir => $ud, arg => "-U /arc", init => 'modprobe fuse' },
 		{ prog => "mount_slash", host => "tg-login1.blacklight$t", dir => $d,  arg => "-U /arc" },
 		{ prog => "mount_slash", host => "tg-login2.blacklight$t", dir => $d,  arg => "-U /arc" },
+		{ prog => "mount_slash", host => "illusion2$p",		   dir => $d,  arg => "-U /arc -D /local/arc.s2/var" },
 
 		{ exec => "sleep", arg => [2] },
 
@@ -188,8 +189,12 @@ foreach my $spec (@{ $dep{$mode} }) {
 		) > \$tmpfile
 		gdb -x \$tmpfile -q $spec->{prog}
 EOF
-	my @screen = qw(screen -A -x -R);
-	push @screen, "-d" if $opts{b};
+	my @screen = qw(screen -A);
+	if ($opts{b}) {
+		push @screen, qw(-d -m);
+	} else {
+		push @screen, qw(-x -R);
+	}
 	my $name = "$mode.$spec->{name}";
 
 	if ($opts{X}) {
