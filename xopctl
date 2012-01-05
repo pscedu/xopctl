@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 # $Id$
+#
 # TODO
 # - parse a .slcfg to populate the data
 
@@ -115,7 +116,7 @@ my %dep = (
 );
 
 sub usage {
-	die "usage: $0 [-vX] [-x termarg] mode [host[:daemon] ...]\n";
+	die "usage: $0 [-bvX] [-x termarg] mode [host[:daemon] ...]\n";
 }
 
 my %opts;

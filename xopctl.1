@@ -1,0 +1,51 @@
+.\" $Id$
+.\" %PSC_START_COPYRIGHT%
+.\" -----------------------------------------------------------------------------
+.\" Copyright (c) 2011, Pittsburgh Supercomputing Center (PSC).
+.\"
+.\" Permission to use, copy, and modify this software and its documentation
+.\" without fee for personal use or non-commercial use within your organization
+.\" is hereby granted, provided that the above copyright notice is preserved in
+.\" all copies and that the copyright and this permission notice appear in
+.\" supporting documentation.  Permission to redistribute this software to other
+.\" organizations or individuals is not permitted without the written permission
+.\" of the Pittsburgh Supercomputing Center.  PSC makes no representations about
+.\" the suitability of this software for any purpose.  It is provided "as is"
+.\" without express or implied warranty.
+.\" -----------------------------------------------------------------------------
+.\" %PSC_END_COPYRIGHT%
+.Dd May 27, 2011
+.Dt ODTABLE 1
+.ds volume PSC \- Administrator's Manual
+.Os http://www.psc.edu/
+.Sh NAME
+.Nm xopctl
+.Nd deployment operation control
+.Sh SYNOPSIS
+.Nm odtable
+.Bk -words
+.Op Fl bvX
+.Op Fl x Ar termarg
+.Ar mode
+.Op Ar host Ns Op : Ns Ar daemon
+.Ek
+.Sh DESCRIPTION
+The
+.Nm
+utility launches and/or connects to daemon sessions.
+.Pp
+The following options are available:
+.Bl -tag -width Ds
+.It Fl b
+Launch sessions for all matching daemon specifications in the background.
+If daemon session already exists, this operation will be a no-op.
+.It Fl v
+Verbose behavior output.
+.It Fl X Ar termarg
+Provide auxillary arguments to the X terminal
+.Pq see Fl x .
+.It Fl x
+Launch X terminals for each matching daemon specification.
+.El
+.Sh SEE ALSO
+.Xr xterm 1
