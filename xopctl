@@ -18,7 +18,7 @@ my $t = ".psc.teragrid.org";
 
 my %dep = (
 	arc => [
-		{ prog => "slashd", host => "illusion1$p", dir => $d },
+		{ prog => "slashd",	 host => "illusion1$p",		   dir => $d,  arg => "-D /local/arc.s2/var" },
 		{ exec => "sleep", arg => [2] },
 
 		{ prog => "mount_slash", host => "firehose1$p",		   dir => $d,  arg => "-U /arc" },
