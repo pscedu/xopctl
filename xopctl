@@ -25,13 +25,14 @@ my %dep = (
 		{ prog => "mount_slash", host => "firehose2$p",		   dir => $d,  arg => "-U /arc" },
 		{ prog => "mount_slash", host => "firehose3$p",		   dir => $d,  arg => "-U /arc" },
 		{ prog => "mount_slash", host => "firehose4$p",		   dir => $d,  arg => "-U /arc" },
+		{ prog => "mount_slash", host => "illusion2$p",		   dir => $d,  arg => "-U /arc -D /local/arc.s2/var" },
 		{ prog => "mount_slash", host => "kollman3$p",		   dir => $d,  arg => "-U /arc", init => 'modprobe fuse' },
-		{ prog => "mount_slash", host => "xfer-admin$p",	   dir => $ud, arg => "-U /arc", init => 'modprobe fuse' },
+		{ prog => "mount_slash", host => "lemur01$p",		   dir => $d,  arg => "-U /arc -D /local/arc.s2/var" },
 		{ prog => "mount_slash", host => "pscuxa$p",		   dir => $d,  arg => "-U /arc", init => 'modprobe fuse' },
 		{ prog => "mount_slash", host => "tahini$p",		   dir => $ud, arg => "-U /arc", init => 'modprobe fuse' },
 		{ prog => "mount_slash", host => "tg-login1.blacklight$t", dir => $d,  arg => "-U /arc" },
 		{ prog => "mount_slash", host => "tg-login2.blacklight$t", dir => $d,  arg => "-U /arc" },
-		{ prog => "mount_slash", host => "illusion2$p",		   dir => $d,  arg => "-U /arc -D /local/arc.s2/var" },
+		{ prog => "mount_slash", host => "xfer-admin$p",	   dir => $ud, arg => "-U /arc", init => 'modprobe fuse' },
 
 		{ exec => "sleep", arg => [2] },
 
