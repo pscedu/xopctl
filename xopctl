@@ -19,6 +19,7 @@ my $t = ".psc.teragrid.org";
 my %dep = (
 	arc => [
 		{ prog => "slashd",	 host => "illusion1$p",		   dir => $d,  arg => "-D /local/arc.s2/var" },
+		{ prog => "slashd",	 host => "illusion2$p",		   dir => $d,  arg => "-D /local/arc.s2/var" },
 		{ exec => "sleep", arg => [2] },
 
 		{ prog => "mount_slash", host => "firehose1$p",		   dir => $d,  arg => "-U /arc" },
@@ -32,8 +33,8 @@ my %dep = (
 		{ prog => "mount_slash", host => "lemur01$p",		   dir => $d,  arg => "-U /arc -D /local/arc.s2/var" },
 		{ prog => "mount_slash", host => "pscuxa$p",		   dir => $d,  arg => "-U /arc", init => 'modprobe fuse' },
 		{ prog => "mount_slash", host => "tahini$p",		   dir => $ud, arg => "-U /arc", init => 'modprobe fuse' },
-		{ prog => "mount_slash", host => "tg-login1.blacklight$t", dir => $d,  arg => "-U /arc" },
-		{ prog => "mount_slash", host => "tg-login2.blacklight$t", dir => $d,  arg => "-U /arc" },
+		{ prog => "mount_slash", host => "tg-login1.blacklight$t", dir => $ud, arg => "-U /arc", init => 'modprobe fuse', env => {LD_LIBRARY_PATH="/usr/local/lib" } },
+		{ prog => "mount_slash", host => "tg-login2.blacklight$t", dir => $ud, arg => "-U /arc", init => 'modprobe fuse', env => {LD_LIBRARY_PATH="/usr/local/lib" }  },
 		{ prog => "mount_slash", host => "xfer-admin$p",	   dir => $ud, arg => "-U /arc", init => 'modprobe fuse' },
 
 		{ exec => "sleep", arg => [2] },
