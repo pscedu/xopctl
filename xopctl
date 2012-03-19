@@ -4,7 +4,7 @@
 # TODO
 # - parse a .slcfg to populate the data
 
-use lib qw(/usr/local/psc/lib/perl5);
+# use lib qw(%INST_PLMODDIR%);
 use lib qw(../../tools/lib);
 use PFL::Getoptv;
 use strict;
