@@ -29,7 +29,7 @@ my %dep = (
 		{ prog => "mount_slash", host => "galosh0$p",		   dir => $ud, arg => "-U /arc" },
 		{ prog => "mount_slash", host => "galosh1$p",		   dir => $ud, arg => "-U /arc" },
 		{ prog => "mount_slash", host => "illusion2$p",		   dir => $d,  arg => "-U /arc -D /local/arc.s2/var" },
-		{ prog => "mount_slash", host => "kollman$p",		   dir => $ud, arg => "-U /arc", init => 'modprobe fuse', env => { LNET_NETWORKS => "tcp12(eth2.99)" } },
+		{ prog => "mount_slash", host => "kollman0$p",		   dir => $ud, arg => "-U /arc", init => 'modprobe fuse', env => { LNET_NETWORKS => "tcp12(eth3)" } },
 		{ prog => "mount_slash", host => "lemur01$p",		   dir => $d,  arg => "-U /arc -D /local/arc.s2/var" },
 		{ prog => "mount_slash", host => "pscuxa$p",		   dir => $d,  arg => "-U /arc", init => 'modprobe fuse' },
 		{ prog => "mount_slash", host => "tahini$p",		   dir => $ud, arg => "-U /arc", init => 'modprobe fuse' },
