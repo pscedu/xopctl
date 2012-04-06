@@ -22,6 +22,8 @@ my %dep = (
 		{ prog => "slashd",	 host => "illusion2$p",		   dir => $d },
 		{ exec => "sleep", arg => [2] },
 
+		{ prog => "mount_slash", host => "arclog0$p",		   dir => $ud, arg => "-U /arc" },
+		{ prog => "mount_slash", host => "arclog1$p",		   dir => $ud, arg => "-U /arc" },
 		{ prog => "mount_slash", host => "firehose1$p",		   dir => $d,  arg => "-U /arc" },
 		{ prog => "mount_slash", host => "firehose2$p",		   dir => $d,  arg => "-U /arc" },
 		{ prog => "mount_slash", host => "firehose3$p",		   dir => $d,  arg => "-U /arc" },
