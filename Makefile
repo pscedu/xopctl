@@ -3,8 +3,7 @@
 ROOTDIR=../..
 include ${ROOTDIR}/Makefile.path
 
-PROG=		xopctl
+BIN=		xopctl
 MAN=		xopctl.1
-RM=		:
 
 include ${MAINMK}
