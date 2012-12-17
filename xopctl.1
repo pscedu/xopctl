@@ -14,7 +14,7 @@
 .\" without express or implied warranty.
 .\" -----------------------------------------------------------------------------
 .\" %PSC_END_COPYRIGHT%
-.Dd January 16, 2012
+.Dd December 17, 2012
 .Dt XOPCTL 1
 .ds volume PSC \- Administrator's Manual
 .Os http://www.psc.edu/
@@ -46,6 +46,18 @@ Provide auxillary arguments to the X terminal
 .Pq see Fl x .
 .It Fl x
 Launch X terminals for each matching daemon specification.
+.El
+.Sh ENVIRONMENT
+.Bl -tag -width Ev
+.It Ev TERM_PROG
+Override the terminal emulator that is spawned for each host session.
+Defaults to
+.Dq xterm .
+.El
+.Sh FILES
+.Bl -tag -width Pa
+.It Pa pfl_daemon.cfg
+Deployment configuration(s).
 .El
 .Sh SEE ALSO
 .Xr xterm 1
