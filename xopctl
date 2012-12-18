@@ -7,7 +7,6 @@ use PFL::Getoptv;
 use strict;
 use warnings;
 
-
 sub usage {
 	die "usage: $0 [-bvX] [-x termarg] deployment [host[:daemon] ...]\n";
 }
