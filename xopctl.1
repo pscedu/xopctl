@@ -24,7 +24,7 @@
 .Sh SYNOPSIS
 .Nm xopctl
 .Bk -words
-.Op Fl bvX
+.Op Fl Kv
 .Op Fl x Ar termarg
 .Ar mode
 .Op Ar host Ns Op : Ns Ar daemon
@@ -33,22 +33,21 @@
 The
 .Nm
 utility launches and/or connects to daemon sessions.
+If sessions already exist, they are reattached.
+If they do not, they are created anew.
 .Pp
 The following options are available:
 .Bl -tag -width Ds
-.It Fl b
-Launch sessions for all matching daemon specifications in the background.
-If daemon session already exists, this operation will be a no-op.
+.It Fl K
+Instead of connecting or creating a session, kill the target session.
 .It Fl v
 Verbose behavior output.
-.It Fl X Ar termarg
-Provide auxillary arguments to the X terminal
-.Pq see Fl x .
-.It Fl x
-Launch X terminals for each matching daemon specification.
-.El
+.It Fl x Ar termarg
+Provide auxillary arguments to the X terminal emulator.
 .Sh ENVIRONMENT
 .Bl -tag -width Ev
+.It Ev bounce_host
+Override the default bounce host; used for reaching internal hosts.
 .It Ev TERM_PROG
 Override the terminal emulator that is spawned for each host session.
 Defaults to
