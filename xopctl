@@ -8,18 +8,18 @@ use strict;
 use warnings;
 
 sub usage {
-	die "usage: $0 [-bvX] [-x termarg] deployment [host[:daemon] ...]\n";
+	die "usage: $0 [-Kv] [-x termarg] deployment [hostspec[:daemon] ...]\n";
 }
 
 my %opts;
-getoptv('bvXx:', \%opts) or usage;
+getoptv('vx:', \%opts) or usage;
 usage unless @ARGV;
 my $mode = shift @ARGV;
 my @uspecs = @ARGV;
 
 for () {
 	if (-f ) {
-		`prof=$mode; . $fn; echo "$@" `;
+		$hosts = `prof=$mode; . $fn; echo "$@" `;
 	}
 }
 
@@ -56,60 +56,29 @@ foreach my $spec (@{ $dep{$mode} }) {
 		}
 		next unless $found;
 	}
-	unless (exists $opts{X} or $spec->{host} =~ /^\Q$hostname\E/) {
+	unless ($spec->{host} =~ /^\Q$hostname\E/) {
 		warn "$spec->{host} is not this host ($hostname), skipping\n";
 		next;
 	}
 	$spec->{cmds} = "" unless exists $spec->{cmds};
-	my $init = <<EOF;
-		export PSC_SYSLOG_info=1
-		export PSC_LOG_LEVEL=warn
-		export PSC_LOG_LEVEL_info=info
-		export PSC_LOG_FILE=$spec->{dir}/$mode.s2/log/$spec->{name}.$spec->{host}/%t
-		export CONFIG_FILE=$spec->{dir}/$mode.s2/slcfg
-		export SHELL=/bin/bash
-		export GDBHISTFILE=`which $spec->{prog}`.gdbhist
-		@{[ map { qq!export $_="$spec->{env}{$_}"\n\t\t! } keys %{ $spec->{env} } ]}
-		ulimit -n 100000
+	my @screen = qw(screen -AxR);
+	my $name = $mode.$spec->{name};
 
-		mkdir -p \$(dirname \$PSC_LOG_FILE)
-		cd "$spec->{dir}/src/p"
+	my @xtargs;
+	push @xtargs, @{ $opts{x} } if $opts{x};
+	push @xtargs, qw(-xrm XTerm*allowTitleOps:false),
+	    "-title", "$spec->{host}: $name" if $term =~ /xterm/;
 
-		@{[exists $spec->{init} ? $spec->{init} : ""]}
-
-		tmpfile=/tmp/.gdbcmd.\$RANDOM
-		(
-			echo set history save on
-			echo set history size 10000
-			echo set confirm off
-			echo set height 0
-			@{[exists $spec->{arg} ? "echo set args $spec->{arg}" : ""]}
-			echo ru
-		) > \$tmpfile
-		gdb -x \$tmpfile -q $spec->{prog}
-EOF
-	my @screen = qw(screen -A);
-	if ($opts{b}) {
-		push @screen, qw(-d -m);
+	my $cmd = "";
+	if ($opts{K}) {
+		push @screen, qw(-X kill);
 	} else {
-		push @screen, qw(-x -R);
+		$cmd = "$spec->{prog}.sh args";
 	}
-	my $name = "$mode.$spec->{name}";
-
-	if ($opts{X}) {
-		my @xtargs;
-		push @xtargs, @{ $opts{x} } if $opts{x};
-		push @xtargs,
-		    qw(-xrm XTerm*allowTitleOps:false),
-		    "-title", "$spec->{host}: $name" if $term =~ /xterm/;
-		if (fork) {
-			exec $term, @xtargs, qw(-e ssh -t), $spec->{host},
-			    "sudo", @screen, "-S", $name,
-			    "sh", "-c", "'$init'" or die "exec: $!\n";
-		}
-	} else {
-		exec @screen, "-S", $name, "sh", "-c", $init or
-		    die "exec: $!\n";
+	if (fork) {
+		exec $term, @xtargs, qw(-e ssh -t), $spec->{host},
+		    "sudo", @screen, "-S", $name,
+		    "sh", "-c", "'$cmd'" or die "exec: $!\n";
 	}
 }
 
