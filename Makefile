@@ -1,6 +1,6 @@
 # $Id$
 
-ROOTDIR=../..
+ROOTDIR=..
 include ${ROOTDIR}/Makefile.path
 
 BIN=		xopctl
